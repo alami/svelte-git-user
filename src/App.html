@@ -1,0 +1,44 @@
+<input bind:value=username placeholder="GitHub username">
+
+{#await user}
+<h3>Loading...</h3>
+{:then user}
+{#if user}
+<User {...user} />
+{/if}
+{:catch error}
+<Error {...error} />
+{/await}
+
+<script>
+    import debounce from 'debounce-promise';
+
+    import User from './User.html';
+    import Error from './Error.html';
+
+    import { getUserCard } from './api.js';
+
+    const getUser = debounce(getUserCard, 1000);
+
+    export default {
+        components: { User, Error },
+        data() {
+            return {
+                username: ''
+            };
+        },
+        computed: {
+            user: ({ username }) => username && getUser(username)
+        }
+    };
+</script>
+
+<style>
+    input {
+        font-size: 20px;
+        border: 1px solid black;
+        border-radius: 3px;
+        margin-bottom: 10px;
+        padding: 10px;
+    }
+</style>

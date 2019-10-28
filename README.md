@@ -69,3 +69,8 @@ Then, from within your project folder:
 npm run build
 surge public
 ```
+#### Полная жизнь на Svelte
+#### https://habr.com/ru/post/458974/
+#### https://svelte.dev/repl/3afce9affec54b49919fa3c76949904d?version=3.12.1
+
+#### formed https://habr.com/ru/post/419653/
